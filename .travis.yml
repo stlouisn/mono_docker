@@ -16,6 +16,7 @@ env:
   global:
     - DOCKER_MAINTAINER="stlouisn"
     - DOCKER_NAME="mono"
+  matrix:
     - DOCKER_TAG="latest"
 
 before_install:
