@@ -16,6 +16,7 @@ env:
   global:
     - DOCKER_MAINTAINER="stlouisn"
     - DOCKER_NAME="mono"
+  matrix:
     - DOCKER_TAG="latest"
 
 before_install:
@@ -35,44 +36,44 @@ after_success:
   - docker push ${DOCKER_USERNAME}/${DOCKER_NAME}:${DOCKER_TAG}
 
   # Trigger bazarr_docker build
-  - >
-    curl -X POST
-    -H "Content-Type: application/json"
-    -H "Travis-API-Version: 3"
-    -H "Accept: application/json"
-    -H "Authorization: token ${TRAVIS_API_TOKEN}"
-    -d '{"request": {"message": "Push from stlouisn/mono", "branch": "master"}}'
-    'https://api.travis-ci.org/repo/stlouisn%2Fbazaar_docker/requests'
+#  - >
+#    curl -X POST
+#    -H "Content-Type: application/json"
+#    -H "Travis-API-Version: 3"
+#    -H "Accept: application/json"
+#    -H "Authorization: token ${TRAVIS_API_TOKEN}"
+#    -d '{"request": {"message": "Push from stlouisn/mono", "branch": "master"}}'
+#    'https://api.travis-ci.org/repo/stlouisn%2Fbazaar_docker/requests'
 
   # Trigger lidarr_docker build
-  - >
-    curl -X POST
-    -H "Content-Type: application/json"
-    -H "Travis-API-Version: 3"
-    -H "Accept: application/json"
-    -H "Authorization: token ${TRAVIS_API_TOKEN}"
-    -d '{"request": {"message": "Push from stlouisn/mono", "branch": "master"}}'
-    'https://api.travis-ci.org/repo/stlouisn%2Flidarr_docker/requests'
+#  - >
+#    curl -X POST
+#    -H "Content-Type: application/json"
+#    -H "Travis-API-Version: 3"
+#    -H "Accept: application/json"
+#    -H "Authorization: token ${TRAVIS_API_TOKEN}"
+#    -d '{"request": {"message": "Push from stlouisn/mono", "branch": "master"}}'
+#    'https://api.travis-ci.org/repo/stlouisn%2Flidarr_docker/requests'
 
   # Trigger radarr_docker build
-  - >
-    curl -X POST
-    -H "Content-Type: application/json"
-    -H "Travis-API-Version: 3"
-    -H "Accept: application/json"
-    -H "Authorization: token ${TRAVIS_API_TOKEN}"
-    -d '{"request": {"message": "Push from stlouisn/mono", "branch": "master"}}'
-    'https://api.travis-ci.org/repo/stlouisn%2Fradarr_docker/requests'
+#  - >
+#    curl -X POST
+#    -H "Content-Type: application/json"
+#    -H "Travis-API-Version: 3"
+#    -H "Accept: application/json"
+#    -H "Authorization: token ${TRAVIS_API_TOKEN}"
+#    -d '{"request": {"message": "Push from stlouisn/mono", "branch": "master"}}'
+#    'https://api.travis-ci.org/repo/stlouisn%2Fradarr_docker/requests'
 
   # Trigger sonarr_docker build
-  - >
-    curl -X POST
-    -H "Content-Type: application/json"
-    -H "Travis-API-Version: 3"
-    -H "Accept: application/json"
-    -H "Authorization: token ${TRAVIS_API_TOKEN}"
-    -d '{"request": {"message": "Push from stlouisn/mono", "branch": "master"}}'
-    'https://api.travis-ci.org/repo/stlouisn%2Fsonarr_docker/requests'
+#  - >
+#    curl -X POST
+#    -H "Content-Type: application/json"
+#    -H "Travis-API-Version: 3"
+#    -H "Accept: application/json"
+#    -H "Authorization: token ${TRAVIS_API_TOKEN}"
+#    -d '{"request": {"message": "Push from stlouisn/mono", "branch": "master"}}'
+#    'https://api.travis-ci.org/repo/stlouisn%2Fsonarr_docker/requests'
 
 notifications:
   email:
