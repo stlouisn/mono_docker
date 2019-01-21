@@ -1,0 +1,45 @@
+language: bash
+dist: trusty
+group: travis_latest
+sudo: required
+
+addons:
+  apt:
+    packages:
+      - docker-ce
+
+branches:
+  only:
+    - master
+
+env:
+  global:
+    - DOCKER_MAINTAINER="stlouisn"
+    - DOCKER_NAME="mono"
+    - DOCKER_TAG="latest"
+
+before_install:
+  - docker version
+  - sudo /sbin/sysctl -w net.ipv4.conf.all.forwarding=1
+
+install:
+
+before_script:
+  - sed -i -e "/^$/d" -e "s/^[ \t]*//" -e "/^#/d" python${DOCKER_TAG}/Dockerfile
+
+script:
+  - docker build --tag ${DOCKER_USERNAME}/${DOCKER_NAME}:${DOCKER_TAG} --pull .
+
+after_success:
+  - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+  - docker push ${DOCKER_USERNAME}/${DOCKER_NAME}:${DOCKER_TAG}
+
+  # Trigger radarr_docker build
+  # Trigger sonarr_docker build
+  # Trigger lidarr_docker build
+  # Trigger bazarr_docker build
+
+notifications:
+  email:
+    on_success: never
+    on_failure: change
