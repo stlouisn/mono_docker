@@ -15,7 +15,7 @@
 [![Docker Stars][docker_stars_logo]][docker_hub_url]
 [![Docker Pulls][docker_pulls_logo]][docker_hub_url]
 
-Mono Base Image.
+Mono is a cross-platform, open source .NET framework.
 
 ### Tags
 
