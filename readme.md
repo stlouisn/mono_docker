@@ -9,7 +9,7 @@
 [issues_url]: https://github.com/stlouisn/mono_docker/issues
 [slack_url]: https://stlouisn.slack.com/messages/CBRNYGY3V
 
-## Java Docker
+## Mono Docker
 
 [![Build Status][travis_logo]][travis_url]
 [![Docker Stars][docker_stars_logo]][docker_hub_url]
