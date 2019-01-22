@@ -21,8 +21,6 @@ RUN \
 
     # Install Mono
     apt-get install -y --no-install-recommends \
-        #mono-xsp4 && \
-        #mono-devel && \
         mono-runtime \
         libmono-cil-dev && \
 
