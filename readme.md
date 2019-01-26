@@ -14,6 +14,7 @@
 [![Build Status][travis_logo]][travis_url]
 [![Docker Stars][docker_stars_logo]][docker_hub_url]
 [![Docker Pulls][docker_pulls_logo]][docker_hub_url]
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Mono is a cross-platform, open source .NET framework.
 
@@ -34,3 +35,5 @@ Mono is a cross-platform, open source .NET framework.
 ### Links
 
 *https://www.mono-project.com/*
+
+*https://github.com/mono/mono*
