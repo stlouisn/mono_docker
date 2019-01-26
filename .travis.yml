@@ -26,7 +26,7 @@ env:
     - VCS_URL="$(git remote get-url origin | head -c-5)"
   matrix:
     - DOCKER_TAG="latest"
-      DOCKER_VERSION="$(curl -sL https://download.mono-project.com/repo/ubuntu/dists/stable-bionic/main/binary-amd64/Packages | head -n 3 | tail -n 1 | cut -d ' ' -f 2 | cut -d - -f 1)"
+      DOCKER_VERSION="$(curl -sL https://download.mono-project.com/repo/ubuntu/dists/stable-bionic/main/binary-amd64/Packages | awk '/Package\: mono-runtime/,0' | head -n 3 | tail -n 1 | cut -d ' ' -f 2 | cut -d - -f 1)"
 
 before_install:
   - docker version
