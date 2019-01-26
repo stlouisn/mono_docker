@@ -14,7 +14,7 @@ RUN \
 
     # Add mono repository
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && \
-    echo "deb https://download.mono-project.com/repo/ubuntu stable main" > /etc/apt/sources.list.d/mono-official-stable.list && \
+    echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" > /etc/apt/sources.list.d/mono-official-stable.list && \
         
     # Update apt-cache
     apt-get update && \
@@ -31,6 +31,7 @@ RUN \
 
     # Clean apt-cache
     apt-get autoremove -y --purge && \
+    apt-get clean -y && \
     apt-get autoclean -y && \
 
     # Cleanup temporary folders
@@ -39,4 +40,3 @@ RUN \
         /root/.wget-hsts \
         /tmp/* \
         /var/lib/apt/lists/* \
-        /var/log/*
