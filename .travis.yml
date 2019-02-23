@@ -5,8 +5,9 @@ sudo: required
 
 if: |
   branch = master AND \
-  NOT commit_message =~ /readme.md/ AND \
-  NOT commit_message =~ /docker-compose.yml/
+  ! commit_message =~ /readme.md/ AND \
+  ! commit_message =~ /docker-compose.yml/ OR \
+  type = cron
 
 addons:
   apt:
@@ -43,24 +44,34 @@ script:
 after_success:
   - echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
   - docker push ${DOCKER_USERNAME}/${DOCKER_NAME}:${DOCKER_TAG}
-  # Trigger lidarr_docker build
-  - >
-    curl -X POST
-    -H "Content-Type: application/json"
-    -H "Travis-API-Version: 3"
-    -H "Accept: application/json"
-    -H "Authorization: token ${TRAVIS_API_TOKEN}"
-    -d '{"request": {"message": "Push from stlouisn/mono", "branch": "master"}}'
-    'https://api.travis-ci.org/repo/stlouisn%2Flidarr_docker/requests'
-  # Trigger sonarr_docker build
-  - >
-    curl -X POST
-    -H "Content-Type: application/json"
-    -H "Travis-API-Version: 3"
-    -H "Accept: application/json"
-    -H "Authorization: token ${TRAVIS_API_TOKEN}"
-    -d '{"request": {"message": "Push from stlouisn/mono", "branch": "master"}}'
-    'https://api.travis-ci.org/repo/stlouisn%2Fsonarr_docker/requests'
+
+jobs:
+  include:
+    - stage: trigger
+      env: DOCKER_TAG=none
+      before_install: skip
+      install: skip
+      before_script: skip
+      script:
+      # Trigger lidarr_docker build
+      - >
+        curl -X POST
+        -H "Content-Type: application/json"
+        -H "Travis-API-Version: 3"
+        -H "Accept: application/json"
+        -H "Authorization: token ${TRAVIS_API_TOKEN}"
+        -d '{"request": {"message": "Push from stlouisn/mono", "branch": "master"}}'
+        'https://api.travis-ci.org/repo/stlouisn%2Flidarr_docker/requests'
+      # Trigger sonarr_docker build
+      - >
+        curl -X POST
+        -H "Content-Type: application/json"
+        -H "Travis-API-Version: 3"
+        -H "Accept: application/json"
+        -H "Authorization: token ${TRAVIS_API_TOKEN}"
+        -d '{"request": {"message": "Push from stlouisn/mono", "branch": "master"}}'
+        'https://api.travis-ci.org/repo/stlouisn%2Fsonarr_docker/requests'
+      after_success: skip
 
 notifications:
   email:
