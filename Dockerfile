@@ -22,7 +22,6 @@ RUN \
     # Install Mono
     apt-get install -y --no-install-recommends \
         mono-runtime \
-        mono-devel \
         ca-certificates-mono \
         libmono-cil-dev && \
 
