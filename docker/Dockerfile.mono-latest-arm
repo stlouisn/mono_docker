@@ -21,7 +21,7 @@ RUN \
 
     # Install Mono
     apt-get install -y --no-install-recommends \
-        mono-devel
+        mono-devel && \
 
     # Install Mono
     apt-get install -y --no-install-recommends \
