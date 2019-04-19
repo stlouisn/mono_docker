@@ -21,7 +21,12 @@ RUN \
 
     # Install Mono
     apt-get install -y --install-recommends \
-        mono-runtime && \
+        mono-runtime \
+        ca-certificates-mono- && \
+    apt-get install -y --install-recommends \
+        ca-certificates-mono && \
+
+#dpkg-reconfigure ca-certificates-mono
 
     # Remove temporary-tools
     apt-get purge -y \
