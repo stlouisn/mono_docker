@@ -10,8 +10,7 @@ body='{
 "branch": "master"
 }}'
 
-for build in $builds
-do
+for build in $builds; do
 
   # Trigger build
   curl -s -X POST \
