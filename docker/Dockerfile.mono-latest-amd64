@@ -21,7 +21,8 @@ RUN \
 
     # Install Mono
     apt-get install -y --no-install-recommends \
-        mono-runtime && \
+        mono-runtime \
+        lib-mono-cil-dev && \
 
     # Remove temporary-tools
     apt-get purge -y \
