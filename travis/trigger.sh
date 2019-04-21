@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-builds="sonarr_docker lidarr_docker"
+builds="lidarr_docker sonarr_docker radarr_docker"
 
 body='{
 "request": {
