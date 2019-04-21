@@ -7,67 +7,29 @@ RUN \
     # Update apt-cache
     apt-get update && \
 
-#    # Install temporary-tools
-#    apt-get install -y --no-install-recommends \
-#        gnupg \
-#        dirmngr && \
-#
-#    # Add mono repository
-#    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && \
-#    echo "deb https://download.mono-project.com/repo/ubuntu stable main" > /etc/apt/sources.list.d/mono-official-stable.list && \
-#        
-#    # Update apt-cache
-#    apt-get update && \
-#
-#    # Install Mono
-#    apt-get install -y --no-install-recommends \
-#        mono-runtime \
-#        libmono-cil-dev && \
-#
-#    # Remove temporary-tools
-#    apt-get purge -y \
-#        gnupg \
-#        dirmngr && \
-
     # Install temporary-tools
     apt-get install -y --no-install-recommends \
-        autoconf \
-        automake \
-        build-essential \
-        cmake \
-        gettext \
-        git \
-        python \
-        libtool \
-        libtool-bin && \
+        gnupg \
+        dirmngr && \
 
-export PREFIX="/usr/local" && \
-export VERSION="$(curl -sL https://download.mono-project.com/sources/mono/ | grep 'tar.bz2' | tail -n 1 | awk -F '>mono-' {'print $2'} | awk -F '.tar.bz2' {'print $1'})" &&\
+    # Add mono repository
+    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && \
+    echo "deb https://download.mono-project.com/repo/ubuntu stable main" > /etc/apt/sources.list.d/mono-official-stable.list && \
+        
+    # Update apt-cache
+    apt-get update && \
 
-cd /tmp && \
-curl -ksSL -o mono-$VERSION.tar.bz2 https://download.mono-project.com/sources/mono/mono-$VERSION.tar.bz2 && \
-bzip2 -d mono-$VERSION.tar.bz2 && \
-cd mono-$VERSION && \
-./configure --prefix=$PREFIX && \
-make && \
-make install && \
-cd /tmp && \
+    # Install Mono
+    apt-get install -y --no-install-recommends \
+        mono-runtime \
+        binfmt-support- \
+        ca-certificates-mono- \
+        libmono-cil-dev && \
 
     # Remove temporary-tools
     apt-get purge -y \
-        autoconf \
-        automake \
-        build-essential \
-        cmake \
-        gettext \
-        git \
-        pkg-config \
-        python \
-        libgtk2.0-dev \
-        libjpeg-dev \
-        libperl-dev \
-        libtool \
-        libtool-bin && \\
+        gnupg \
+        dirmngr && \
 
     # Clean apt-cache
     apt-get autoremove -y --purge && \
