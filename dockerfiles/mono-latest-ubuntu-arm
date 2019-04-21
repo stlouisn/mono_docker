@@ -39,6 +39,8 @@ RUN \
         git \
         pkg-config \
         python \
+        libgtk2.0-dev \
+        libperl-dev \
         libtool \
         libtool-bin && \
 
@@ -67,6 +69,8 @@ cd /tmp && \
         git \
         pkg-config \
         python \
+        libgtk2.0-dev \
+        libperl-dev \
         libtool \
         libtool-bin && \
 
