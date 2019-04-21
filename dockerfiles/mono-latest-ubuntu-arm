@@ -39,7 +39,7 @@ RUN \
         git \
         python \
         libtool \
-        libtool-bin
+        libtool-bin \
         libglib2.0-dev \
         libxrender-dev \
         libfontconfig1-dev \
