@@ -7,27 +7,85 @@ RUN \
     # Update apt-cache
     apt-get update && \
 
+#    # Install temporary-tools
+#    apt-get install -y --no-install-recommends \
+#        gnupg \
+#        dirmngr && \
+#
+#    # Add mono repository
+#    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && \
+#    echo "deb https://download.mono-project.com/repo/ubuntu stable main" > /etc/apt/sources.list.d/mono-official-stable.list && \
+#        
+#    # Update apt-cache
+#    apt-get update && \
+#
+#    # Install Mono
+#    apt-get install -y --no-install-recommends \
+#        mono-runtime \
+#        libmono-cil-dev && \
+#
+#    # Remove temporary-tools
+#    apt-get purge -y \
+#        gnupg \
+#        dirmngr && \
+
     # Install temporary-tools
     apt-get install -y --no-install-recommends \
-        gnupg \
-        dirmngr && \
+        autoconf \
+        automake \
+        build-essential \
+        cmake \
+        gettext \
+        git \
+        python \
+        libtool \
+        libtool-bin
+        libglib2.0-dev \
+        libxrender-dev \
+        libfontconfig1-dev \
+        libpng12-dev \
+        libgif-dev \
+        libjpeg8-dev \
+        libtiff5-dev \
+        libexif-dev \
+        libcairo2-dev && \
 
-    # Add mono repository
-    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && \
-    echo "deb https://download.mono-project.com/repo/ubuntu stable main" > /etc/apt/sources.list.d/mono-official-stable.list && \
-        
-    # Update apt-cache
-    apt-get update && \
-
-    # Install Mono
-    apt-get install -y --no-install-recommends \
-        mono-runtime \
-        libmono-cil-dev && \
+cd /tmp && \
+git clone git://github.com/mono/libgdiplus && \
+cd libgdiplus && \
+./autogen.sh --prefix=/usr && \
+make && \
+make install && \
+cd /tmp && \
+clone git://github.com/mono/mono.git && \
+cd mono && \
+./autogen.sh --prefix=/usr/local && \
+apt-get install -y mono-gmcs && \
+make && \
+make install && \
+cd /tmp && \
 
     # Remove temporary-tools
     apt-get purge -y \
-        gnupg \
-        dirmngr && \
+        autoconf \
+        automake \
+        build-essential \
+        cmake \
+        gettext \
+        git \
+        python \
+        libtool \
+        libtool-bin
+        libglib2.0-dev \
+        libxrender-dev \
+        libfontconfig1-dev \
+        libpng12-dev \
+        libgif-dev \
+        libjpeg8-dev \
+        libtiff5-dev \
+        libexif-dev \
+        libcairo2-dev && \
+
 
     # Clean apt-cache
     apt-get autoremove -y --purge && \
