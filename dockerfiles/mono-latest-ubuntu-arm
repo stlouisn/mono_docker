@@ -37,6 +37,7 @@ RUN \
         cmake \
         gettext \
         git \
+        pkg-config \
         python \
         libtool \
         libtool-bin && \
@@ -64,6 +65,7 @@ cd /tmp && \
         cmake \
         gettext \
         git \
+        pkg-config \
         python \
         libtool \
         libtool-bin && \
