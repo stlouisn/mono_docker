@@ -40,6 +40,7 @@ RUN \
         pkg-config \
         python \
         libgtk2.0-dev \
+        libjpeg-dev \
         libperl-dev \
         libtool \
         libtool-bin && \
@@ -70,9 +71,10 @@ cd /tmp && \
         pkg-config \
         python \
         libgtk2.0-dev \
+        libjpeg-dev \
         libperl-dev \
         libtool \
-        libtool-bin && \
+        libtool-bin && \\
 
     # Clean apt-cache
     apt-get autoremove -y --purge && \
