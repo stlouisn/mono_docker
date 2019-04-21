@@ -42,7 +42,7 @@ RUN \
         libtool-bin && \
 
 export PREFIX="/usr/local" && \
-export VERSION="$(curl -sL https://download.mono-project.com/sources/mono/ | grep 'tar.bz2' | tail -n 1 | awk -F '>mono-' {'print $2'} | awk -F '.tar.bz2' {'print $1'}) &&\
+export VERSION="$(curl -sL https://download.mono-project.com/sources/mono/ | grep 'tar.bz2' | tail -n 1 | awk -F '>mono-' {'print $2'} | awk -F '.tar.bz2' {'print $1'})" &&\
 
 cd /tmp && \
 curl -ksSL -o mono-$VERSION.tar.bz2 https://download.mono-project.com/sources/mono/mono-$VERSION.tar.bz2 && \
