@@ -22,7 +22,6 @@ RUN \
     # Install Mono
     apt-get install -y --no-install-recommends \
         mono-runtime \
-        mono-complete \
         libmono-cil-dev && \
 
     # Remove temporary-tools
