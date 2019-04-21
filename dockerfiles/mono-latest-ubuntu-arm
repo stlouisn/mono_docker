@@ -19,11 +19,10 @@ RUN \
     # Update apt-cache
     apt-get update && \
 
-export MONO_ENV_OPTIONS=-O=-aot && \
-
     # Install Mono
     apt-get install -y --no-install-recommends \
         mono-runtime \
+        mono-complete \
         libmono-cil-dev && \
 
     # Remove temporary-tools
