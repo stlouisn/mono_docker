@@ -2,8 +2,10 @@
 
 set -euo pipefail
 
+# Builds to trigger
 builds="lidarr_docker sonarr_docker radarr_docker"
 
+# Commit Message
 body='{
 "request": {
 "message": "Push from stlouisn/mono",
