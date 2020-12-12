@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # Builds to trigger
-builds="lidarr_docker sonarr_docker radarr_docker"
+builds="lidarr_docker sonarr_docker"
 
 # Commit Message
 body='{
